@@ -1,8 +1,6 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-const __dirname = path.resolve();
-
 export default {
   entry: {
     /*the key here is what is used to get the name on the filename
@@ -12,13 +10,19 @@ export default {
     index: './src/index.js',
     vendor: './src/vendorjs/vendor.js',
   },
-  plugins: [new HtmlWebpackPlugin({ template: './public/index.html' })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'public/index.html',
+      template: './public/index.html',
+      minify: {
+        removeAttributeQuotes: true,
+        collapseWhitespace: true,
+        removeComments: true,
+      },
+    }),
+  ],
   module: {
     rules: [
-      {
-        test: /\.scss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-      },
       {
         test: /\.html$/,
         use: ['html-loader'],
@@ -29,7 +33,7 @@ export default {
           loader: 'file-loader',
           options: {
             name: '[name].[hash].[ext]',
-            outputPath: 'images',
+            outputPath: 'assets/images',
           },
         },
       },
