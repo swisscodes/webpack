@@ -4,12 +4,19 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 const __dirname = path.resolve();
 
 export default {
-  entry: './src/index.js',
+  entry: {
+    /*the key here is what is used to get the name on the filename
+    e.g filename: '[name].bundle.[contenthash].js',
+    the name gets the index here for example
+    */
+    index: './src/index.js',
+    vendor: './src/vendorjs/vendor.js',
+  },
   plugins: [new HtmlWebpackPlugin({ template: './public/index.html' })],
   module: {
     rules: [
       {
-        test: /\.scss/,
+        test: /\.scss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
@@ -17,11 +24,11 @@ export default {
         use: ['html-loader'],
       },
       {
-        test: /\.(svg|png|jpg|gif)$/,
+        test: /\.(svg|png|jpg|jpeg|gif)$/i,
         use: {
           loader: 'file-loader',
           options: {
-            name: '[name].[hash].ext',
+            name: '[name].[hash].[ext]',
             outputPath: 'images',
           },
         },

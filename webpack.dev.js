@@ -6,8 +6,9 @@ const __dirname = path.resolve();
 
 export default merge(webpackCommon, {
   mode: 'development',
+  devtool: 'inline-source-map',
   output: {
-    filename: 'buid.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
 });
