@@ -1,6 +1,8 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+const __dirname = path.resolve();
+
 export default {
   entry: {
     /*the key here is what is used to get the name on the filename
@@ -32,9 +34,17 @@ export default {
         type: 'asset/resource',
       },
       {
+        test: /\.json$/,
+        type: 'json',
+      },
+
+      {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         type: 'asset/resource',
       },
     ],
+  },
+  resolve: {
+    modules: [`...`, path.resolve(__dirname, 'src')],
   },
 };

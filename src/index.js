@@ -1,2 +1,4 @@
 import './assets/css/style.scss';
-console.log('hello webpack index.js');
+import items from 'data/items.json';
+
+items.map((item) => console.log(item.a));
