@@ -10,12 +10,20 @@ export default merge(webpackCommon, {
   mode: 'production',
   output: {
     filename: 'js/[name].bundle.[contenthash].js',
+    assetModuleFilename: (pathData) => {
+      const filepath = path
+        .dirname(pathData.filename)
+        .split('/')
+        .slice(1)
+        .join('/');
+      return `${filepath}/[name].[hash][ext][query]`;
+    },
     path: path.resolve(__dirname, 'dist'),
     clean: true, //to clean/delete the dist folder everytime we build
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'public/assets/css/[name].[contenthash].css',
+      filename: 'assets/css/[name].[contenthash].css',
     }),
   ],
   module: {

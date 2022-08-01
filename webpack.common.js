@@ -12,8 +12,8 @@ export default {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: 'public/index.html',
-      template: './public/index.html',
+      filename: 'index.html',
+      template: 'src/index.html',
       minify: {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
@@ -29,13 +29,11 @@ export default {
       },
       {
         test: /\.(svg|png|jpg|jpeg|gif)$/i,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[hash].[ext]',
-            outputPath: 'assets/images',
-          },
-        },
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        type: 'asset/resource',
       },
     ],
   },
