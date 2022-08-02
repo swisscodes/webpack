@@ -26,3 +26,9 @@ console.log(await fetchData('https://jsonplaceholder.typicode.com/todos/'));
 
 let data = await fetchData('https://jsonplaceholder.typicode.com/todos/');
 console.log(data, 'data part');
+
+data.map((item) => {
+  var myP = document.createElement('p');
+  myP.innerText = item.title;
+  myDiv.append(myP);
+});
