@@ -47,4 +47,7 @@ export default {
   resolve: {
     modules: [`...`, path.resolve(__dirname, 'src')],
   },
+  experiments: {
+    topLevelAwait: true,
+  },
 };

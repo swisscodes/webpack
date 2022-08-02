@@ -1,2 +1,1 @@
-import '../assets/css/style.scss';
-console.log('hello world');
+import bootstrap from 'bootstrap';
