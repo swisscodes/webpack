@@ -1,0 +1,39 @@
+@mixin btn-color($color) {
+    background-color: $color;
+    color: #fff;
+}
+
+//we use this mixins by using the @include btn-color(pass_color)
+
+//passing a declaration block to mixins
+@mixin foo($color:null) {//default null
+    color: $color;
+    .inner {
+        @content;
+    }
+}
+
+/* data structures in sass */
+@for $i from 1 through 5 {
+    h#{$i} {
+        font-size:5rem - $i*0.75rem;
+    }
+}
+
+//list $mylist: 0 0 2px #000;
+//to iterate through list in sass use @each
+$mylist: 0 0 2px #000;
+
+.foo {
+    @each $i in $mylist {
+        //then access the item
+        .class-#{$i} {
+            color:red
+        }
+    }
+}
+
+//Map
+$myMap: (femi:#009, light:#fff);
+//To use map in sass we must use the map-get() function e.g
+$femiColor: map-get($myMap , $femi);

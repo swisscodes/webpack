@@ -1,4 +1,6 @@
+@use "mixins";
 @use "custom";
+@use "variables" as *;
 
 @font-face {
     font-family: 'roboto';
@@ -48,25 +50,35 @@ p {
     }
 }
 
+
+// sass lesson starts here
+
 .btn-wrap {
     display: flex;
     flex-flow: column wrap;
     gap: 0.625em;
-    button { /* .btn-wrap button */
+    button { /* .btn-wrap button comment will remain*/
         width: 6.125em;
-        border: 1px solid #c46;
         padding: 2px 10px;
         border-radius: 2px;
-        &.btn-primary { /* botton.btn-primary */
-            background-color: #c46;
+        &.btn-primary { // botton.btn-primary
+            border: 1px solid $venus;
+            background-color: rgba($hopbush, 0.3);
+            filter:saturate(1.5); //150%
+            color: #fff;
         }
-        &.btn-secondary { /* botton.btn-secondary */
-            background-color: #edbcc8;
+        &.btn-secondary { //* botton.btn-secondary this type of comment will be removed
+            border: 1px solid cadetblue;
+            background-color: peru;
+            color:#000;
         }
         &:disabled {
             opacity: 0.5;
         }
     }
 }
+
+//mixins 
+
 
 @import "~bootstrap/scss/bootstrap";
