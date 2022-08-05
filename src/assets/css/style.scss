@@ -18,7 +18,7 @@
 }
 
 
-$body-color: aqua;
+$body-color: aqua;  /* declaring a variable name in sass this is not the same as css variables*/
 
 body {
     font-family: 'roboto';
@@ -28,6 +28,45 @@ body {
 
 p {
     color: custom.$another_color;
+}
+
+
+.image img {
+    height:inherit;
+    width: inherit;
+}
+
+.image {
+    height:100px;
+    width:100px;
+}
+
+/*& this is parent selector*/
+.sass-lesson {
+    h1 {
+        color: #c46;
+    }
+}
+
+.btn-wrap {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 0.625em;
+    button { /* .btn-wrap button */
+        width: 6.125em;
+        border: 1px solid #c46;
+        padding: 2px 10px;
+        border-radius: 2px;
+        &.btn-primary { /* botton.btn-primary */
+            background-color: #c46;
+        }
+        &.btn-secondary { /* botton.btn-secondary */
+            background-color: #edbcc8;
+        }
+        &:disabled {
+            opacity: 0.5;
+        }
+    }
 }
 
 @import "~bootstrap/scss/bootstrap";

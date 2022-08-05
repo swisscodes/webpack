@@ -9,7 +9,7 @@ export default {
     e.g filename: '[name].bundle.[contenthash].js',
     the name gets the index here for example
     */
-    index: './src/index.js',
+    index: './src/index.ts',
     vendor: './src/vendorjs/vendor.js',
   },
   plugins: [
@@ -25,6 +25,11 @@ export default {
   ],
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
       {
         test: /\.html$/,
         use: ['html-loader'],
@@ -46,6 +51,7 @@ export default {
   },
   resolve: {
     modules: [`...`, path.resolve(__dirname, 'src')],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   experiments: {
     topLevelAwait: true,
