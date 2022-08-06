@@ -31,6 +31,7 @@ data.map((item:any, i:number) => {
   if(i<10) {
     var mainBody = document.getElementsByTagName('main')[0];
     var myP = document.createElement('p');
+    myP.classList.add(`mt-${i + 1}`);
     myP.innerText = item.title;
     mainBody.append(myP);
   }

@@ -23,9 +23,10 @@
 //list $mylist: 0 0 2px #000;
 //to iterate through list in sass use @each
 $mylist: 0 0 2px #000;
+$anotherList: 1 2 3 4 5 6 7 8 9 10;
 
 .foo {
-    @each $i in $mylist {
+    @each $i in $anotherList {
         //then access the item
         .class-#{$i} {
             color:red
@@ -34,6 +35,22 @@ $mylist: 0 0 2px #000;
 }
 
 //Map
-$myMap: (femi:#009, light:#fff);
+$myMap: ("femi":#009, light:#fff);
 //To use map in sass we must use the map-get() function e.g
-$femiColor: map-get($myMap , $femi);
+$femiColor: map-get($myMap , "femi");
+//or
+$otherColor:#{nth($myMap, 1)}; //gets the first item on the map
+
+//for example lets generate margin-top from 1 to 100 px to em
+$sides:("t": "top", "r": "right", "b": "bottom", "l": "left");
+@each $key, $side in $sides {
+    @for $i from 1 through 100 {
+        .m#{$key}-#{$i} {
+            margin-#{$side}: calc($i / 16)+em;
+        }
+
+        .p#{$key}-#{$i} {
+            padding-#{$side}: calc($i / 16)+em;;
+        }
+    }
+}
